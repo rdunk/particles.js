@@ -56,7 +56,10 @@ var pJS = function(tag_id, params){
       },
       size: {
         value: 20,
-        random: false,
+        random: {
+          enable: false,
+          size_min: 0
+        },
         anim: {
           enable: false,
           speed: 20,
@@ -241,7 +244,7 @@ var pJS = function(tag_id, params){
   pJS.fn.particle = function(color, opacity, position){
 
     /* size */
-    this.radius = (pJS.particles.size.random ? Math.random() : 1) * pJS.particles.size.value;
+    this.radius = (pJS.particles.size.random.enable ? Math.max(Math.random(), pJS.particles.size.random.size_min) : 1) * pJS.particles.size.value;
     if(pJS.particles.size.anim.enable){
       this.size_status = false;
       this.vs = pJS.particles.size.anim.speed / 100;
